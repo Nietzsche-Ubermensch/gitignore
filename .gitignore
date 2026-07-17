@@ -1,0 +1,8 @@
+# Environment variables containing secrets
+.env
+.env.local
+.env.*.local
+
+# Secret management credentials
+.vault-token
+.aws/credentials

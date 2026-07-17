@@ -1,0 +1,28 @@
+# Gitleaks configuration
+# Docs: https://github.com/gitleaks/gitleaks#configuration
+title = "Gitleaks Configuration"
+
+[extend]
+# Extend the default ruleset shipped with Gitleaks
+useDefault = true
+
+# Additional custom rules can be added below
+[[rules]]
+id = "custom-api-key"
+description = "Detects potential custom API keys"
+regex = '''(?i)(?:api[_-]?key|apikey)\s*[:=]\s*['"]?([A-Za-z0-9_\-]{20,})['"]?'''
+tags = ["key", "api"]
+
+[[rules]]
+id = "custom-secret"
+description = "Detects generic secret assignments"
+regex = '''(?i)(?:secret|password|passwd|token)\s*[:=]\s*['"]?([A-Za-z0-9_\-/+=]{16,})['"]?'''
+tags = ["secret", "generic"]
+
+# Allowlist patterns that are safe to commit (e.g., example files, tests)
+[allowlist]
+paths = [
+  '''.env\.example$''',
+  '''security/README\.md$''',
+  '''security/INCIDENT-RESPONSE\.md$''',
+]
