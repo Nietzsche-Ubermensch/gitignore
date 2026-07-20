@@ -1,0 +1,1 @@
+Blackbox CLI + Hermes + GitHub integration verified.
