@@ -60,8 +60,8 @@ if __name__ == "__main__":
     api_key = get_secret("myapp/production/api-keys", "API_KEY")
     api_secret = get_secret("myapp/production/api-keys", "API_SECRET")
 
-    print(f"API_KEY loaded: {api_key[:4]}****")
-    print(f"API_SECRET loaded: {api_secret[:4]}****")
+    print("API_KEY loaded from Vault")
+    print("API_SECRET loaded from Vault")
 
 
 # ---------------------------------------------------------------------------
