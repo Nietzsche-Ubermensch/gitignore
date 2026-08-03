@@ -96,11 +96,9 @@ def rotate_key(client: hvac.Client, key_name: str) -> tuple[str, str]:
     )
 
     logger.info(
-        "Rotated key '%s' at %s (old prefix: %s..., new prefix: %s...)",
+        "Rotated key '%s' at %s",
         key_name,
         datetime.datetime.utcnow().isoformat(),
-        old_key[:8] if old_key else "N/A",
-        new_key[:8],
     )
     return old_key, new_key
 
