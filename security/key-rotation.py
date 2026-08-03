@@ -118,8 +118,9 @@ def verify_new_key(new_key: str) -> bool:
     #     headers={"Authorization": f"******"}
     # )
     # return response.status_code == 200
-    logger.info("Key verification passed (stub — implement real check)")
-    return True
+    raise NotImplementedError(
+        "verify_new_key() must be implemented before running key rotation in production"
+    )
 
 
 def revoke_old_key(old_key: str) -> None:
