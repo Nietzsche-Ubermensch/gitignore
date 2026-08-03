@@ -84,7 +84,11 @@ def rotate_key(client: hvac.Client, key_name: str) -> tuple[str, str]:
         path=SECRET_PATH, mount_point="secret"
     )
     current_data = current["data"]["data"]
-    old_key = current_data.get(key_name, "")
+    old_key = current_data.get(key_name)
+    if not old_key:
+        raise RuntimeError(
+            f"Existing key '{key_name}' not found at secret path '{SECRET_PATH}'"
+        )
 
     # Generate new key
     new_key = generate_new_key()
