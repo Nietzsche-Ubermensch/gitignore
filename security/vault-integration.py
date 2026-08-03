@@ -49,7 +49,12 @@ def get_secret(path: str, key: str, mount_point: str = "secret") -> str:
     response = client.secrets.kv.v2.read_secret_version(
         path=path, mount_point=mount_point
     )
-    return response["data"]["data"][key]
+    try:
+        return response["data"]["data"][key]
+    except KeyError as exc:
+        raise KeyError(
+            f"Secret key '{key}' not found at '{mount_point}/{path}'"
+        ) from exc
 
 
 # ---------------------------------------------------------------------------
